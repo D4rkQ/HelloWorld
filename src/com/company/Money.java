@@ -18,29 +18,47 @@ public class Money {
     }
 
     public Money add(Money a) throws Exception {
-        int centsum=0;
-        long eurosum=0;
-        centsum = a.getCent()+this.getCent();
-        eurosum = a.getEuro()+this.getEuro();
+        int centSol=0;
+        long euroSol=0;
+        centSol = a.getCent()+this.getCent();
+        euroSol = a.getEuro()+this.getEuro();
 
-        if (centsum > 99) {
-            eurosum++;
-            centsum -= 100;
+        if (centSol > 99) {
+            euroSol++;
+            centSol -= 100;
         }
-        return new Money(eurosum, centsum);
+        return new Money(euroSol, centSol);
     }
 
     public Money subtract(Money a) throws Exception {
-        int centsum=0;
-        long eurosum=0;
-        centsum = this.getCent()-a.getCent();
-        eurosum = this.getEuro()-a.getEuro();
+        int centSol=0;
+        long euroSol=0;
+        centSol = this.getCent()-a.getCent();
+        euroSol = this.getEuro()-a.getEuro();
 
-        if (centsum < 0) {
-            eurosum--;
-            centsum += 100;
+        if (centSol < 0) {
+            euroSol--;
+            centSol += 100;
         }
-        return new Money(eurosum, centsum);
+        return new Money(euroSol, centSol);
+    }
+
+    public Money mult(int fac) throws Exception {
+        int centSol=0;
+        int tmp=0;
+        long euroSol=0;
+        centSol = this.getCent()*fac;
+        euroSol = this.getEuro()*fac;
+
+        if (centSol > 99) {
+
+            tmp = centSol/100;
+            euroSol += tmp;
+            centSol -= (tmp*100);
+        }
+
+
+        return new Money(euroSol, centSol);
     }
 
 
