@@ -15,5 +15,22 @@ public class Main {
         m2 = m2.mult(5);
         System.out.println(m2);
 
+        InvoiceBuilder ib = new InvoiceBuilder();
+
+        ib.addLineItem(new LineItem("Papier",new Money(12,10),13));
+        ib.addLineItem(new LineItem("Schere",new Money(5,88),3));
+        ib.clearLineItems();
+        ib.addLineItem(new LineItem("Papier2",new Money(5,88),3));
+        ib.addLineItem(new LineItem("Schere2",new Money(5,88),3));
+        Invoice invoice1 = ib.create();
+
+        System.out.println(invoice1.sum());
+
+
+
+        for (LineItem x: invoice1.getLineItems()) {
+            System.out.println(x);
+        }
+
     }
 }

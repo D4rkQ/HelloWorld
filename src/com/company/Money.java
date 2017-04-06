@@ -44,6 +44,8 @@ public class Money {
     }
 
     public Money mult(int fac) throws Exception {
+        //Nur Ganzzahlig erlaub; To do Centbeträge
+
         int centSol=0;
         int tmp=0;
         long euroSol=0;

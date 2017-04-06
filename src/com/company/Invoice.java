@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -8,17 +9,23 @@ import java.util.List;
  */
 public class Invoice {
 
-    private final List<LineItem> ListOfLineItems;
+    private final List<LineItem> listOfLineItems = new ArrayList<LineItem>();
 
-    public Invoice(List<LineItem> listOfLineItems) {
-        ListOfLineItems = listOfLineItems;
+    public Invoice(List<? extends LineItem> listOfLineItems) {
+        this.listOfLineItems.addAll(listOfLineItems);
     }
 
     public double sum() {
         double tmp=0;
-        for (LineItem x:ListOfLineItems) {
+        for (LineItem x: listOfLineItems) {
             tmp += x.sum();
         }
         return tmp;
     }
+
+    public List<LineItem> getLineItems() {
+        return Collections.unmodifiableList(listOfLineItems);
+    }
+
+
 }

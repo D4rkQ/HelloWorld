@@ -20,4 +20,12 @@ public class LineItem {
 
     }
 
+    @Override
+    public String toString() {
+        return "LineItem{" +
+                "description='" + description + '\'' +
+                ", money=" + money +
+                ", amount=" + amount +
+                '}';
+    }
 }
